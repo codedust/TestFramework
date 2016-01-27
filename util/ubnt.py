@@ -44,6 +44,7 @@ class Ubnt(PowerStrip):
     def ip(self) -> str:
         """
         IP of power strip
+
         :return: IP number as string
         """
         return self._ip
@@ -52,6 +53,7 @@ class Ubnt(PowerStrip):
     def vlan_iface_id(self) -> int:
         """
         VLAN ID of power strip
+
         :return:
         """
         return self._vlan_iface_id
@@ -60,6 +62,7 @@ class Ubnt(PowerStrip):
     def vlan_iface_name(self) -> str:
         """
         Used VLAN name from server for this power strip
+
         :return:
         """
         return self._vlan_iface_name
@@ -68,6 +71,7 @@ class Ubnt(PowerStrip):
     def namespace_name(self) -> str:
         """
         Name of namespace
+
         :return:
         """
         return self._namespace_name
@@ -76,6 +80,7 @@ class Ubnt(PowerStrip):
     def ip_mask(self) -> int:
         """
         IP mask
+
         :return:
         """
         return self._ip_mask
@@ -84,6 +89,7 @@ class Ubnt(PowerStrip):
     def usr_name(self) -> str:
         """
         Username
+
         :return:
         """
         return self._usr_name
@@ -92,6 +98,7 @@ class Ubnt(PowerStrip):
     def usr_password(self) -> str:
         """
         User password
+
         :return:
         """
         return self._usr_password
@@ -100,6 +107,7 @@ class Ubnt(PowerStrip):
     def n_ports(self) -> int:
         """
         Number of Ports
+
         :return:
         """
         return self._n_ports
@@ -131,6 +139,7 @@ class Ubnt(PowerStrip):
     def port_status(self, port_id):
         """
         Checks if power on port is on or off
+
         :param port_id: ID of power strip port
         :return: 1 for on or 0 for off, 2 for error
         """
@@ -145,6 +154,7 @@ class Ubnt(PowerStrip):
     def up(self, port_id):
         """
         Turns on power on port
+
         :param port_id: ID of power strip port
         :return: bool for failure or success
         """
@@ -163,6 +173,7 @@ class Ubnt(PowerStrip):
     def down(self, port_id):
         """
         Turns off power on port
+
         :param port_id: ID of power strip port
         :return: bool for failure or success
         """

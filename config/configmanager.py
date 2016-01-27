@@ -313,6 +313,7 @@ class ConfigManager:
     def get_web_interface_config() -> []:
         """
         Read the web interface Config file
+
         :return: Array with the output from the file
         """
         path = os.path.join(ConfigManager.CONFIG_PATH, ConfigManager.WEB_INTERFACE_CONFIG_FILE)
@@ -322,6 +323,7 @@ class ConfigManager:
     def get_web_interface_dict() -> []:
         """
         Read the web interface Config file
+
         :return: Dictionary with a specific output from the file
         """
         output = ConfigManager.get_web_interface_config()
@@ -331,6 +333,7 @@ class ConfigManager:
     def get_web_interface_list() -> []:
         """
         Read the web interface Config file
+
         :return: List with a specific output from the file
         """
         output = ConfigManager.get_web_interface_config()
@@ -344,6 +347,7 @@ class ConfigManager:
     def get_power_strip_config() -> []:
         """
         Read the power strip Config file
+
         :return: Array with the output from the file
         """
         path = os.path.join(ConfigManager.CONFIG_PATH, ConfigManager.POWER_STRIP_CONFIG_FILE)
