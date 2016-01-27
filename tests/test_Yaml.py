@@ -162,5 +162,21 @@ class MyTestCase(unittest.TestCase):
         data = ConfigManager.get_web_interface_list()
         self.assertEqual(len(data), 60, "web_interface_Yaml: Wrong size of the List")
 
+    def test_power_strip_config(self):
+        """
+        Tests the power strip config
+        :return: Tests results
+        """
+        data = ConfigManager.get_power_strip_config()
+        self.assertEqual(len(data), 8, "power_strip_Yaml: Wrong size of the List")
+
+    def test_power_strip_dict(self):
+        """
+        Tests the power strip config
+        :return: Tests results
+        """
+        data = ConfigManager.get_power_strip_list()
+        self.assertEqual(len(data), 1, "power_strip_Yaml: Wrong size of the List")
+
     if __name__ == '__main__':
         unittest.main()

@@ -3,6 +3,7 @@ import io
 from log.logger import Logger
 import os.path
 from server.router import Router
+from util.ubnt import Ubnt
 
 
 class ConfigManager:
@@ -18,6 +19,7 @@ class ConfigManager:
     TEST_CONFIG_FILE = 'test_config.yaml'
     FIRMWARE_CONFIG_FILE = 'firmware_config.yaml'
     WEB_INTERFACE_CONFIG_FILE = 'web_interface_config.yaml'
+    POWER_STRIP_CONFIG_FILE = 'powerstrip_config.yaml'
 
     @classmethod
     def set_config_path(cls, config_path: str = "") -> None:
@@ -337,3 +339,49 @@ class ConfigManager:
             for v in x.values():
                 web_list.append(v)
         return web_list
+
+    @staticmethod
+    def get_power_strip_config() -> []:
+        """
+        Read the power strip Config file
+        :return: Array with the output from the file
+        """
+        path = os.path.join(ConfigManager.CONFIG_PATH, ConfigManager.POWER_STRIP_CONFIG_FILE)
+        return ConfigManager.read_file(path)
+
+    @staticmethod
+    def get_power_strip_list() -> []:
+        """
+        Read the power strip Config file
+        :return: List with any power strips objects from the file
+        """
+        output = ConfigManager.get_power_strip_config()
+
+        if not len(output) == 8:
+            Logger().error("List must be length of 8 but has a length of {0}".format(len(output)))
+            return
+
+        try:
+            count_dict = output[0]
+            count = count_dict['Power_Strip_Count']
+            name = output[1]
+            id_dict = output[2]
+            id_power_strip = id_dict['default_Start_Id']
+            mask = output[3]
+            ip = output[4]
+            username = output[5]
+            password = output[6]
+            ports = output[7]
+
+            power_strip_list = []
+
+            for i in range(0, count):
+                u = Ubnt(name['default_Name'], id_power_strip, ip['default_IP'], mask['default_Mask'],
+                         username['default_Username'], password['default_Password'], ports['default_Ports'])
+                id_power_strip += 1
+                power_strip_list.append(u)
+
+            return power_strip_list
+
+        except Exception as ex:
+            Logger().error("Error at building the list of Router's\nError: {0}".format(ex))
